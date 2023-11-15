@@ -1,7 +1,5 @@
-const fs = require("fs");
+const fs= require("fs");
 const path = require("path");
-
-const defaultSchmeas = require("./Defaults/deafult.schema.js");
 
 const defaultDbPath = "DB/data.json";
 const dbJSON = {
@@ -11,6 +9,7 @@ const dbJSON = {
 };
 
 const clusterJSON = {
+  _id: "",
   clusterName: "",
   description: "",
   data: [],
@@ -25,11 +24,9 @@ function generateId() {
   );
 }
 
-function createCluster(name, description) {
-  if (!name) throw new Error("Cluster name is required");
-  if (typeof name !== defaultSchmeas.ClusterSchema.name) throw new Error("Cluster name must be a string");
-  if (typeof description !== defaultSchmeas.ClusterSchema.description) throw new Error("Cluster description must be a string");
+function createCluster(name = "Cluster1", description =  "ClusterDescription") {
   const cluster = { ...clusterJSON };
+  cluster._id = generateId();
   cluster.clusterName = name;
   cluster.description = description;
   return cluster;
@@ -37,15 +34,24 @@ function createCluster(name, description) {
 
 function addCluster(cluster) {
   const db = loadJSON();
-  if (cluster.name === "") throw new Error("Cluster name is required");
-  if (typeof cluster.name !== defaultSchmeas.ClusterSchema.name) throw new Error("Cluster name must be a string");
-  if (typeof cluster.description !== defaultSchmeas.ClusterSchema.description) throw new Error("Cluster description must be a string");
-  if (typeof cluster.data !== defaultSchmeas.ClusterSchema.data) throw new Error("Cluster data must be an array");
+  if (!cluster.clusterName || !cluster.description || !cluster.data) throw new Error("Your cluster doesn't either have name, description or data array!");
   db.clusters.push(cluster);
   saveJSON(defaultDbPath, db);
 }
 
-function initializeDatabase(name, description) {
+function getClusterByName(clusterName) {
+  const db = loadJSON();
+  const clusters = db.clusters;
+  for (const cluster of clusters) {
+    if (cluster.clusterName === clusterName) return cluster;
+  }
+}
+
+function createAndAddEmptyCluster(name = "Cluster1", description =  "ClusterDescription") {
+  addCluster(createCluster(name, description));
+}
+
+function initializeDatabase(name = "defaultName", description = "default description") {
   const db = { ...dbJSON };
   db.dbName = name;
   db.description = description;
@@ -69,4 +75,6 @@ module.exports = {
   createCluster,
   addCluster,
   initializeDatabase,
+  getClusterByName,
+  createAndAddEmptyCluster
 }
