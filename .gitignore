@@ -90,3 +90,4 @@ typings/
 # Added for testing
 index.js
 .vscode
+.idea
