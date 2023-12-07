@@ -3,15 +3,15 @@
 
 Welcome to my little  **side**  project! It's simple "json" database. To use it:
 
-1.  Use your favorite package manager to install `db-quickly` 🚀
-2.  Import it using  `const Database = require("db-quickly");`  📁
+1.  Use your favorite package manager to install `db-quickly-js` 🚀
+2.  Import it using  `const Database = require("db-quickly-js");`  📁
 2.  Have fun! ❤️
 
 There are plenty of functions to use, make sure to check them out!
 
 Example of use:
 ```js
-const Database = require("db-quickly");
+const Database = require("db-quickly-js");
 
 Database.initializeDatabase("Great Database", "This database is used to store the greatest data", false);
 let cluster1 = Database.createCluster();
