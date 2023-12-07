@@ -1,34 +1,36 @@
-# NoSQLDatabaseJS
-Welcome to my little **side** project! It's simple "json" database.
-To use it:
-1. Download this repo 🚀
-2. Put the `NoSQLDatabaseJS` folder into your project 📁
-3. Import it using `const Database = require("./NoSQLDatabaseJS/libs/Database.js");` 🔃
-4. Have fun! ❤️
+
+# Database-quickly
+
+Welcome to my little  **side**  project! It's simple "json" database. To use it:
+
+1.  Use your favorite package manager to install `db-quickly` 🚀
+2.  Import it using  `const Database = require("db-quickly");`  📁
+2.  Have fun! ❤️
 
 There are plenty of functions to use, make sure to check them out!
 
+Example of use:
 ```js
-const Database = require("./NoSQLDatabaseJS/libs/Database.js");
-  
-console.log(Database.initializeDatabase("Test1", "Test2", true));  
-  
-let cluster1 = Database.createCluster();  
-  
-let cluster2 = Database.createCluster("Cluster2");  
+const Database = require("db-quickly");
+
+Database.initializeDatabase("Great Database", "This database is used to store the greatest data", false);
+let cluster1 = Database.createCluster();
+let cluster2 = Database.createCluster("ClusterName", "Description of this cluster");  
   
 Database.addCluster(cluster1);  
 Database.addCluster(cluster2);  
   
-console.log(Database.getAllClusters());  
+let allClusters = Database.getAllClusters();
+console.log(allClusters);
   
 cluster1.clusterName = "UpdatedClusterName";  
 cluster2.clusterName = "UpdatedClusterNameNumber2";  
   
 Database.updateClusterByName("Cluster1", cluster1);  
 Database.updateClusterById(cluster2._id, cluster2);  
-  
-console.log(Database.getAllClusters());  
+
+allClusters = Database.getAllClusters();
+console.log(allClusters); 
   
 Database.deleteClusterByName("UpdatedClusterName");  
 Database.deleteClusterById(cluster2._id);  
@@ -36,4 +38,4 @@ Database.deleteClusterById(cluster2._id);
 console.log(Database.getAllClusters());
 ```
 
-If you have any questions, make sure to contact me on **Discord** `kubiczeek`
+If you have any questions, make sure to contact me on  **Discord**  `kubiczeek`
