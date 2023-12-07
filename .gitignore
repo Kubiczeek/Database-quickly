@@ -88,6 +88,5 @@ typings/
 .dynamodb/
 
 # Added for testing
-index.js
 .vscode
 .idea
