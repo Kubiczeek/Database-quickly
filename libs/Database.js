@@ -6,7 +6,7 @@ class Database {
     constructor(name, description) {
         this.name = name || "defaultName";
         this.description = description || "Default description";
-        this.defaultDbPath = "DB/data.json";
+        this.defaultDbPath = "db-quickly.json";
         this.clusters = [];
     }
 
@@ -211,4 +211,4 @@ class Database {
     }
 }
 
-module.exports = new Database();
+module.exports = Database;

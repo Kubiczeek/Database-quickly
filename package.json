@@ -1,19 +1,9 @@
 {
-  "name": "NoSQLDatabaseJS",
+  "name": "db-quickly",
   "version": "1.0.0",
-  "description": "",
+  "description": "Want to have some quickly accessible database for javascript? This is it!",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
-  "author": "Kubiczeek",
-  "license": "OSL",
-  "dependencies": {
-    "fs": "0.0.1-security",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "@types/node": "^20.8.10"
-  }
+  "author": "kubiczeek",
+  "license": "OSL"
 }
